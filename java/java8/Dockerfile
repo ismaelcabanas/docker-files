@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 
 MAINTAINER Ismael Cabañas Garcia <ismaelcabanas@gmail.com>
 
@@ -12,7 +12,8 @@ RUN apt-get update && \
 	apt-get update && \
 	echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
 	echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
-	apt-get install -y oracle-java8-installer && rm -rf /var/lib/apt/lists/*
+	apt-get install -y oracle-java8-installer && rm -rf /var/lib/apt/lists/* && \
+	apt-get update && apt-get install curl
 
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
