@@ -1,4 +1,4 @@
-## java8
+## JAVA 8
 Contenedor Docker basado en Ubuntu 16.04 y Java 8.
 
 # Descripción
