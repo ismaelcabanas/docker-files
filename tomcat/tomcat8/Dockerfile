@@ -1,4 +1,4 @@
-FROM ismaelcabanas/docker-java8
+FROM ismaelcabanas/java:java8
 
 MAINTAINER Ismael Cabañas Garcia <ismaelcabanas@gmail.com>
 
@@ -7,9 +7,6 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
 WORKDIR $CATALINA_HOME
 
-# instalamos curl para realizar descargas
-RUN apt-get update \
-    && rm -rf /var/lib/apt/lists/* 
 
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.0.35
@@ -23,9 +20,7 @@ RUN set -x \
 	&& tar -xvf tomcat.tar.gz -C /opt/tomcat --strip-components=1 \
 	&& rm tomcat.tar.gz* && \
 	rm -rf /opt/tomcat/webapps/examples && \
-	rm -rf /opt/tomcat/webapps/docs && \
-	rm -rf /opt/tomcat/webapps/ROOT
-
+	rm -rf /opt/tomcat/webapps/docs
 
 # indica a Docker en qué puerto escuchará el proceso
 EXPOSE 8080
